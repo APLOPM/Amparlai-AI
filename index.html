@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="dark" lang="th">
+<html lang="th">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amparlai AI Operating Platform 2026</title>
+    <title>Amparlai Autonomous AI Operating Core</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -14,109 +14,139 @@
         theme: {
           extend: {
             colors: {
-              brand: '#22c55e',
-              accent: '#0ea5e9',
-              panel: '#152334',
-              panel2: '#1d3046'
+              navy: '#0B132B',
+              electric: '#1C77FF',
+              emerald: '#00C896',
+              warmgray: '#F4F6F8',
+              amber: '#F5A623',
+              softred: '#E5484D'
             },
             fontFamily: {
-              display: ['Manrope', 'sans-serif']
+              heading: ['Space Grotesk', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+              code: ['Source Code Pro', 'monospace']
+            },
+            boxShadow: {
+              card: '0 8px 30px rgba(11,19,43,0.08)'
+            },
+            keyframes: {
+              pulseSoft: {
+                '0%, 100%': { opacity: '0.9' },
+                '50%': { opacity: '0.55' }
+              }
+            },
+            animation: {
+              pulseSoft: 'pulseSoft 2s ease-in-out infinite'
             }
           }
         }
       };
     </script>
   </head>
-  <body class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-display min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 py-6 space-y-6">
-      <header class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-panel p-6">
-        <p class="uppercase tracking-[0.2em] text-xs text-slate-500">Amparlai AI Business OS</p>
-        <h1 class="text-3xl font-extrabold mt-2">แพลตฟอร์มบริหารการขายอาหารเสริมด้วย Multi-Agent AI</h1>
-        <p class="mt-3 text-slate-600 dark:text-slate-300">โครงสร้างปฏิบัติการแบบ AI-as-Operator สำหรับปี 2026 ครอบคลุม R&D, Marketing, Sales, Supply Chain, Compliance และ Executive Control</p>
+  <body class="bg-warmgray text-navy font-body min-h-screen">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+      <header class="bg-white rounded-2xl border border-slate-200 shadow-card p-6 sm:p-8">
+        <p class="text-xs uppercase tracking-[0.2em] text-electric font-semibold">Autonomous AI Operating Core</p>
+        <h1 class="font-heading text-3xl sm:text-4xl font-bold mt-3">Technical & UX Consolidated Blueprint</h1>
+        <p class="mt-3 text-slate-600 max-w-4xl">Production-ready multi-agent orchestration platform for personalized nutrition enterprises: not a chatbot, not a marketing add-on, and not ERP, but a coordinated commercial intelligence engine.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 text-sm">
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200"><p class="text-slate-500">Orchestration Latency</p><p class="font-semibold">&lt; 1s</p></div>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200"><p class="text-slate-500">Compliance Mode</p><p class="font-semibold">Thai FDA + PDPA</p></div>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200"><p class="text-slate-500">Health Data</p><p class="font-semibold">Consent-first Terra API</p></div>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200"><p class="text-slate-500">Deployment</p><p class="font-semibold">Docker + Kubernetes</p></div>
+        </div>
       </header>
 
-      <section class="grid xl:grid-cols-3 gap-6">
-        <article class="xl:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-panel p-6">
-          <h2 class="text-xl font-bold mb-4">Enterprise Multi-Agent Orchestration</h2>
-          <div class="grid md:grid-cols-2 gap-4 text-sm">
-            <div class="rounded-xl bg-slate-50 dark:bg-panel2 p-4 border border-slate-200 dark:border-slate-700">
-              <h3 class="font-bold mb-2">Hybrid Framework Core</h3>
-              <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-300">
-                <li>CrewAI: Role-based collaboration ระหว่าง CMO + Sales + Support</li>
-                <li>LangGraph: Deterministic flow สำหรับ approval, stock-cut, legal checks</li>
-                <li>Reflection loop: ตรวจสอบ/ย้อนกลับก่อน commit การตัดสินใจ</li>
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <article class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+          <h2 class="font-heading text-2xl font-semibold">1) Core AI Orchestration Layer</h2>
+          <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="rounded-xl border border-slate-200 p-4">
+              <h3 class="font-semibold">LangGraph (Deterministic)</h3>
+              <ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1">
+                <li>Compliance gating</li>
+                <li>Order lifecycle control</li>
+                <li>Financial approval chain</li>
               </ul>
             </div>
-            <div class="rounded-xl bg-slate-50 dark:bg-panel2 p-4 border border-slate-200 dark:border-slate-700">
-              <h3 class="font-bold mb-2">Thai AI Runtime</h3>
-              <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-300">
-                <li>OpenThaiGPT 1.5 สำหรับบทสนทนาไทยเชิงสุขภาพ</li>
-                <li>RAG บนกฎหมาย อย. + PDPA + SOP ภายใน</li>
-                <li>Event-driven bus กระจาย insight แบบ near real-time</li>
+            <div class="rounded-xl border border-slate-200 p-4">
+              <h3 class="font-semibold">CrewAI (Collaborative Reasoning)</h3>
+              <ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1">
+                <li>Strategy synthesis</li>
+                <li>Campaign ideation</li>
+                <li>R&amp;D scenario simulation</li>
               </ul>
+            </div>
+            <div class="rounded-xl border border-slate-200 p-4 sm:col-span-2">
+              <h3 class="font-semibold">AI Runtime Integration</h3>
+              <p class="mt-2 text-slate-600">Gemini handles multimodal reasoning while Genkit standardizes tool-calling, model routing, and streaming response delivery.</p>
             </div>
           </div>
         </article>
 
-        <aside class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-accent to-sky-700 text-white p-6">
-          <h2 class="text-xl font-bold">KPI Snapshot</h2>
+        <aside class="lg:col-span-4 bg-navy text-white rounded-2xl p-6 shadow-card">
+          <h2 class="font-heading text-xl">Status Lights</h2>
           <div class="space-y-3 mt-4 text-sm">
-            <div class="bg-white/10 rounded-lg p-3 flex justify-between"><span>GMV Growth</span><strong>+38%</strong></div>
-            <div class="bg-white/10 rounded-lg p-3 flex justify-between"><span>Stockout Risk</span><strong>-42%</strong></div>
-            <div class="bg-white/10 rounded-lg p-3 flex justify-between"><span>Compliance Pass</span><strong>99.4%</strong></div>
-            <div class="bg-white/10 rounded-lg p-3 flex justify-between"><span>Delivery SLA</span><strong>96.8%</strong></div>
+            <div class="flex items-center justify-between rounded-lg bg-white/10 p-3"><span>Autonomous Stable</span><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald animate-pulseSoft"></span>Green</span></div>
+            <div class="flex items-center justify-between rounded-lg bg-white/10 p-3"><span>Monitoring</span><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amber"></span>Yellow</span></div>
+            <div class="flex items-center justify-between rounded-lg bg-white/10 p-3"><span>Escalation Required</span><span class="inline-flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-softred"></span>Red</span></div>
           </div>
+          <p class="mt-4 text-xs text-slate-200">Calm technology principle: prioritize peripheral awareness and escalate only exceptions.</p>
         </aside>
       </section>
 
-      <section class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-panel p-6">
-        <h2 class="text-xl font-bold mb-4">AI C-Suite Organizational Blueprint</h2>
-        <div class="overflow-x-auto">
+      <section class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+        <h2 class="font-heading text-2xl font-semibold">2) AI C-Suite Functional Architecture</h2>
+        <div class="mt-4 overflow-x-auto">
           <table class="w-full text-sm">
-            <thead>
-              <tr class="text-left border-b border-slate-200 dark:border-slate-700">
-                <th class="py-2 pr-2">Agent Role</th>
-                <th class="py-2 pr-2">ความรับผิดชอบ</th>
-                <th class="py-2 pr-2">เทคโนโลยีหลัก</th>
-                <th class="py-2">เป้าหมายเชิงกลยุทธ์</th>
+            <thead class="bg-slate-50 text-slate-700">
+              <tr>
+                <th class="text-left px-3 py-2">Agent</th>
+                <th class="text-left px-3 py-2">Core Capability</th>
+                <th class="text-left px-3 py-2">Integrations / Inputs</th>
+                <th class="text-left px-3 py-2">Trigger / Output</th>
               </tr>
             </thead>
-            <tbody class="text-slate-600 dark:text-slate-300">
-              <tr class="border-b border-slate-100 dark:border-slate-800"><td class="py-2 pr-2 font-semibold">AI CEO</td><td class="py-2 pr-2">กลยุทธ์และความเสี่ยงระดับองค์กร</td><td class="py-2 pr-2">LLM Reasoning + Executive Dashboard</td><td class="py-2">ตัดสินใจระดับวินาที</td></tr>
-              <tr class="border-b border-slate-100 dark:border-slate-800"><td class="py-2 pr-2 font-semibold">AI COO</td><td class="py-2 pr-2">Demand Forecast + Logistics</td><td class="py-2 pr-2">TimeGPT, SCG JWD API, Flash API</td><td class="py-2">ลดสต็อกค้าง/เพิ่มความเร็วส่ง</td></tr>
-              <tr class="border-b border-slate-100 dark:border-slate-800"><td class="py-2 pr-2 font-semibold">AI CMO</td><td class="py-2 pr-2">Hyper-personalized campaign</td><td class="py-2 pr-2">Sentiment AI, TikTok Shop, LINE OA</td><td class="py-2">เพิ่ม ROI และ Conversion</td></tr>
-              <tr><td class="py-2 pr-2 font-semibold">AI Compliance</td><td class="py-2 pr-2">FDA/PDPA Gatekeeper</td><td class="py-2 pr-2">RAG legal pipeline + policy engine</td><td class="py-2">ป้องกันความเสี่ยงด้านกฎหมาย</td></tr>
+            <tbody class="divide-y divide-slate-200">
+              <tr><td class="px-3 py-2 font-semibold">AI CEO</td><td class="px-3 py-2">KPI aggregation, volatility detection, risk matrix</td><td class="px-3 py-2">Revenue, inventory, campaign ROI</td><td class="px-3 py-2">Strategic recommendation packet + risk heatmap</td></tr>
+              <tr><td class="px-3 py-2 font-semibold">AI COO</td><td class="px-3 py-2">Demand forecasting, inventory balancing, cold-chain control</td><td class="px-3 py-2">SCG JWD Logistics, Flash Express</td><td class="px-3 py-2">Campaign spike loop to last-mile dispatch (&lt;1s internal cycle)</td></tr>
+              <tr><td class="px-3 py-2 font-semibold">AI CFO</td><td class="px-3 py-2">Cashflow governance, OCR invoices, anomaly and fraud detection</td><td class="px-3 py-2">Financial ledgers + expense streams</td><td class="px-3 py-2">Runway alert to CEO / inventory capital lock alert to COO</td></tr>
+              <tr><td class="px-3 py-2 font-semibold">AI CMO</td><td class="px-3 py-2">Trend and sentiment clustering, campaign generation</td><td class="px-3 py-2">TikTok Shop, GCP Natural Language</td><td class="px-3 py-2">Personalized assets + affiliate optimization</td></tr>
+              <tr><td class="px-3 py-2 font-semibold">AI Sales Director</td><td class="px-3 py-2">Conversational commerce and dynamic bundling</td><td class="px-3 py-2">LINE Messaging API</td><td class="px-3 py-2">Autonomous checkout with escalation fallback</td></tr>
+              <tr><td class="px-3 py-2 font-semibold">AI R&amp;D</td><td class="px-3 py-2">Formula graph clustering and bioavailability prediction</td><td class="px-3 py-2">PIPA, SKS FormulaAI</td><td class="px-3 py-2">Ingredient swap when COO flags supply risk</td></tr>
+              <tr><td class="px-3 py-2 font-semibold">AI Compliance</td><td class="px-3 py-2">Thai FDA + PDPA legal gate via RAG</td><td class="px-3 py-2">Thai legal corpus and prompt logs</td><td class="px-3 py-2">Auto-approve / human review / block matrix with explainability</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section class="grid lg:grid-cols-3 gap-6">
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-panel p-6">
-          <h3 class="text-lg font-bold">R&D Agent Flow</h3>
-          <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5 space-y-2">
-            <li>ค้นหา bioactive compounds จาก scientific knowledge graph</li>
-            <li>จำลองความคงตัวรสชาติ + bioavailability</li>
-            <li>Ingredient swapping อัตโนมัติเมื่อวัตถุดิบเสี่ยงขาดตลาด</li>
+      <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+          <h3 class="font-heading text-lg">3) Hyper-Personalized Health Integration</h3>
+          <p class="mt-2 text-sm text-slate-600">Wearable signals flow through consent validation into tokenized vector profiles hosted in Thai data centers.</p>
+          <ul class="mt-3 text-sm list-disc pl-5 text-slate-600 space-y-1">
+            <li>Sleep deficit → sleep support campaign</li>
+            <li>HRV drop → stress formulation recommendation</li>
           </ul>
         </article>
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-panel p-6">
-          <h3 class="text-lg font-bold">Agentic Commerce</h3>
-          <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5 space-y-2">
-            <li>เชื่อม Terra/Healthie เพื่อรับ biomarker แบบยินยอม</li>
-            <li>ยิงแคมเปญเฉพาะบุคคลผ่าน LINE OA/TikTok</li>
-            <li>AI Sales ตอบแชท ปิดการขาย สร้าง payment link ได้ทันที</li>
-          </ul>
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+          <h3 class="font-heading text-lg">4) Autonomous Logistics &amp; Delivery</h3>
+          <p class="mt-2 text-sm text-slate-600">Event-driven chain: order confirmed → stock lock → warehouse allocation → dispatch confirmation → customer notification.</p>
+          <p class="mt-3 text-sm text-slate-600">Includes temperature-sensitive routing, smart stock rotation, and optional biometric verification.</p>
         </article>
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-panel p-6">
-          <h3 class="text-lg font-bold">Governance & Calm Tech</h3>
-          <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5 space-y-2">
-            <li>Consent management + RBAC + data localization</li>
-            <li>AI Compliance block คำอ้างสรรพคุณผิดกฎหมาย</li>
-            <li>Dashboard แสดงเฉพาะ exception เพื่อไม่ overload ผู้บริหาร</li>
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+          <h3 class="font-heading text-lg">5-7) Calm UX + Stack + Observability</h3>
+          <ul class="mt-2 text-sm list-disc pl-5 text-slate-600 space-y-1">
+            <li>12-column modular card grid with KPI ribbon</li>
+            <li>Subtle 150–250ms state transitions</li>
+            <li>Frontend: TypeScript + NextJS + TailwindCSS</li>
+            <li>Backend: FastAPI + Genkit + PostgreSQL + Vector DB</li>
+            <li>Metrics dashboard, drift detection, confidence logs</li>
           </ul>
         </article>
       </section>
-    </div>
+
+      <footer class="text-xs text-slate-500 pb-2 font-code">System Positioning: Coordinated, agent-driven commercial intelligence engine for personalized nutrition enterprises.</footer>
+    </main>
   </body>
 </html>
