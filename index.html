@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="dark" lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OmniCore AI - Executive Strategic Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#137fec',
+              'background-light': '#f6f7f8',
+              'background-dark': '#101922',
+              'card-dark': '#182635',
+              'card-highlight': '#233648',
+              'accent-success': '#0bda5b',
+              'accent-warning': '#fa6238',
+              'accent-neutral': '#92adc9'
+            },
+            fontFamily: {
+              display: ['Manrope', 'sans-serif']
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen overflow-x-hidden">
+    <div class="flex min-h-screen w-full flex-col">
+      <header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-card-highlight px-6 lg:px-10 py-4 bg-white dark:bg-card-dark sticky top-0 z-50">
+        <div class="flex items-center gap-8">
+          <div class="flex items-center gap-4">
+            <div class="size-8 text-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-3xl">hub</span>
+            </div>
+            <h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">OmniCore Exec</h2>
+          </div>
+          <nav class="hidden lg:flex items-center gap-8">
+            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">AI Agents</a>
+            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Inventory</a>
+            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+          </nav>
+        </div>
+        <div class="flex flex-1 justify-end gap-4 items-center">
+          <label class="hidden md:flex min-w-40 h-10 max-w-64 relative group">
+            <div class="flex w-full items-stretch rounded-lg h-full bg-slate-100 dark:bg-card-highlight group-focus-within:ring-2 ring-primary/50 transition-all">
+              <div class="text-slate-500 dark:text-accent-neutral flex items-center justify-center pl-3">
+                <span class="material-symbols-outlined text-[20px]">search</span>
+              </div>
+              <input class="w-full bg-transparent border-none text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-accent-neutral px-3 text-sm focus:ring-0 focus:outline-none" placeholder="Search insights..." />
+            </div>
+          </label>
+          <button class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-card-highlight text-slate-500 dark:text-accent-neutral transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="absolute top-2 right-2 size-2 bg-accent-success rounded-full border-2 border-white dark:border-card-dark"></span>
+          </button>
+        </div>
+      </header>
+
+      <main class="flex-1 px-6 lg:px-20 py-8 w-full max-w-[1600px] mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <h1 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Executive Overview</h1>
+            <p class="text-slate-500 dark:text-accent-neutral text-base">Real-time strategic pulse of your supplement & functional nutrition business.</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="flex items-center gap-2 px-4 py-2 bg-card-dark dark:bg-card-highlight text-slate-200 text-sm font-medium rounded-lg">Export Report</button>
+            <button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg shadow-lg shadow-primary/20">New Campaign</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight shadow-sm">
+            <p class="text-sm text-slate-500 dark:text-accent-neutral mb-2">Total Revenue</p>
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">$4.2M</p>
+          </div>
+          <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight shadow-sm">
+            <p class="text-sm text-slate-500 dark:text-accent-neutral mb-2">AI-driven ROI</p>
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">320%</p>
+          </div>
+          <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight shadow-sm">
+            <p class="text-sm text-slate-500 dark:text-accent-neutral mb-2">CAC</p>
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">$14.50</p>
+          </div>
+          <div class="p-6 rounded-xl bg-gradient-to-br from-card-dark to-card-highlight border border-slate-200 dark:border-card-highlight shadow-sm">
+            <p class="text-sm text-slate-300 mb-3">System Health</p>
+            <div class="space-y-2 text-xs">
+              <p class="text-slate-200">Marketing Agent <span class="text-accent-success float-right">98%</span></p>
+              <p class="text-slate-200">Sales Agent <span class="text-accent-success float-right">100%</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <section class="lg:col-span-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight rounded-xl p-6 shadow-sm min-h-[340px]">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Revenue Growth vs AI Spend</h3>
+            <div class="h-64 rounded-lg bg-gradient-to-b from-slate-50 to-white dark:from-[#131b24] dark:to-card-dark flex items-end gap-3 p-4">
+              <div class="bg-primary/30 w-full h-[40%] rounded-t"></div>
+              <div class="bg-primary/40 w-full h-[55%] rounded-t"></div>
+              <div class="bg-primary/50 w-full h-[45%] rounded-t"></div>
+              <div class="bg-primary/60 w-full h-[70%] rounded-t"></div>
+              <div class="bg-primary/70 w-full h-[60%] rounded-t"></div>
+              <div class="bg-primary/90 w-full h-[85%] rounded-t"></div>
+            </div>
+          </section>
+
+          <aside class="bg-gradient-to-b from-card-highlight to-card-dark border border-slate-200 dark:border-card-highlight rounded-xl p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-white mb-4">AI Strategic Insights</h3>
+            <div class="space-y-4 text-sm text-slate-200">
+              <div class="p-4 rounded-lg bg-white/5 border border-white/10">Demand for weight-management products up 15% in the North region.</div>
+              <div class="p-4 rounded-lg bg-white/5 border border-white/10">Predicted stock shortage for premium collagen blend in 3 days.</div>
+              <div class="p-4 rounded-lg bg-white/5 border border-white/10">Competitor discount campaign detected; retention remains strong at 92%.</div>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
