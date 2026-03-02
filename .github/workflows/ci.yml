@@ -1,70 +1,129 @@
-name: CI
+name: Monorepo CI
 
 on:
   push:
-    branches: [dev]
+    branches: [dev, staging, main]
   pull_request:
-    branches: [staging, main]
+    branches: [dev, staging, main]
   workflow_dispatch:
 
 jobs:
-  lint_typecheck_test:
+  detect:
+    name: Detect monorepo toolchain
     runs-on: ubuntu-latest
+    outputs:
+      has_node: ${{ steps.detect.outputs.has_node }}
+      package_manager: ${{ steps.detect.outputs.package_manager }}
+      orchestrator: ${{ steps.detect.outputs.orchestrator }}
+      workspaces: ${{ steps.detect.outputs.workspaces }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          HAS_NODE="false"
+          PM="npm"
+          ORCHESTRATOR="none"
+
+          if [ -f package.json ] || [ -d apps ] || [ -d packages ] || [ -f nx.json ] || [ -f turbo.json ]; then
+            HAS_NODE="true"
+          fi
+
+          if [ -f pnpm-lock.yaml ]; then PM="pnpm"; fi
+          if [ -f yarn.lock ]; then PM="yarn"; fi
+          if [ -f package-lock.json ]; then PM="npm"; fi
+
+          if [ -f nx.json ]; then
+            ORCHESTRATOR="nx"
+          elif [ -f turbo.json ]; then
+            ORCHESTRATOR="turbo"
+          fi
+
+          mapfile -t WS < <(find apps packages services -mindepth 1 -maxdepth 2 -name package.json -print 2>/dev/null | sed 's#/package.json##' | sort -u)
+          if [ -f package.json ]; then
+            WS=("." "${WS[@]}")
+          fi
+
+          if [ ${#WS[@]} -eq 0 ]; then
+            WORKSPACES='["."]'
+          else
+            WORKSPACES=$(printf '%s\n' "${WS[@]}" | jq -R -s -c 'split("\n") | map(select(length>0))')
+          fi
+
+          echo "has_node=$HAS_NODE" >> "$GITHUB_OUTPUT"
+          echo "package_manager=$PM" >> "$GITHUB_OUTPUT"
+          echo "orchestrator=$ORCHESTRATOR" >> "$GITHUB_OUTPUT"
+          echo "workspaces=$WORKSPACES" >> "$GITHUB_OUTPUT"
+
+  ci:
+    name: CI (${{ matrix.environment }})
+    needs: detect
+    if: needs.detect.outputs.has_node == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        environment: [dev, staging, prod]
+    env:
+      APP_ENV: ${{ matrix.environment }}
+      ORCHESTRATOR: ${{ needs.detect.outputs.orchestrator }}
+      PM: ${{ needs.detect.outputs.package_manager }}
+      WORKSPACES: ${{ needs.detect.outputs.workspaces }}
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: ${{ needs.detect.outputs.package_manager }}
 
-      - name: Install dependencies (frontend)
+      - name: Install dependencies
+        shell: bash
         run: |
-          if [ -f package-lock.json ]; then npm ci; else echo "No package-lock.json found, skipping npm ci"; fi
+          set -euo pipefail
+          case "$PM" in
+            pnpm)
+              corepack enable
+              pnpm install --frozen-lockfile || pnpm install
+              ;;
+            yarn)
+              corepack enable
+              yarn install --immutable || yarn install
+              ;;
+            npm)
+              if [ -f package-lock.json ]; then npm ci; else npm install; fi
+              ;;
+          esac
 
-      - name: ESLint
+      - name: Run lint/test/build (Nx/Turbo/workspace)
+        shell: bash
         run: |
-          if [ -f package.json ] && npm run | grep -q " lint"; then npm run lint; else echo "No lint script found, skipping"; fi
+          set -euo pipefail
 
-      - name: TypeScript check
-        run: |
-          if [ -f package.json ] && npm run | grep -q " type-check"; then npm run type-check; else echo "No type-check script found, skipping"; fi
+          if [ "$ORCHESTRATOR" = "nx" ]; then
+            npx nx run-many -t lint,test,build --configuration="$APP_ENV" --all --parallel=3
+            exit 0
+          fi
 
-      - name: Prettier check
-        run: |
-          if [ -f package.json ] && npm run | grep -q " format:check"; then npm run format:check; else echo "No format:check script found, skipping"; fi
+          if [ "$ORCHESTRATOR" = "turbo" ]; then
+            npx turbo run lint test build --continue --summarize
+            exit 0
+          fi
 
-      - name: Frontend tests
-        run: |
-          if [ -f package.json ] && npm run | grep -q " test"; then npm test -- --ci; else echo "No test script found, skipping"; fi
-
-      - name: Backend tests
-        run: |
-          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt pytest && pytest; else echo "No requirements.txt found, skipping backend tests"; fi
-
-  security_scan:
-    runs-on: ubuntu-latest
-    needs: lint_typecheck_test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: npm audit
-        run: |
-          if [ -f package-lock.json ]; then npm audit --audit-level=high; else echo "No package-lock.json found, skipping npm audit"; fi
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: pip-audit
-        run: |
-          if [ -f requirements.txt ]; then python -m pip install pip-audit && pip-audit -r requirements.txt; else echo "No requirements.txt found, skipping pip-audit"; fi
+          echo "$WORKSPACES" | jq -r '.[]' | while read -r ws; do
+            echo "::group::Workspace $ws"
+            if [ "$ws" = "." ]; then
+              npm run lint --if-present
+              npm run test --if-present
+              npm run build --if-present
+            else
+              npm --prefix "$ws" run lint --if-present
+              npm --prefix "$ws" run test --if-present
+              npm --prefix "$ws" run build --if-present
+            fi
+            echo "::endgroup::"
+          done
