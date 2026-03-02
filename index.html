@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OmniCore AI - Executive Strategic Dashboard</title>
+    <title>HealthCoffee AI - Personal Coach & Training Console</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -15,14 +15,16 @@
         theme: {
           extend: {
             colors: {
-              primary: '#137fec',
-              'background-light': '#f6f7f8',
-              'background-dark': '#101922',
-              'card-dark': '#182635',
-              'card-highlight': '#233648',
-              'accent-success': '#0bda5b',
-              'accent-warning': '#fa6238',
-              'accent-neutral': '#92adc9'
+              primary: '#1b84f3',
+              secondary: '#7f56d9',
+              'background-light': '#f4f7fb',
+              'background-dark': '#0f1722',
+              'card-dark': '#162336',
+              'card-highlight': '#223347',
+              'accent-success': '#22c55e',
+              'accent-warning': '#f59e0b',
+              'accent-danger': '#ef4444',
+              'accent-neutral': '#9fb3c8'
             },
             fontFamily: {
               display: ['Manrope', 'sans-serif']
@@ -32,95 +34,133 @@
       };
     </script>
   </head>
-  <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen overflow-x-hidden">
+  <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
     <div class="flex min-h-screen w-full flex-col">
-      <header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-card-highlight px-6 lg:px-10 py-4 bg-white dark:bg-card-dark sticky top-0 z-50">
-        <div class="flex items-center gap-8">
-          <div class="flex items-center gap-4">
-            <div class="size-8 text-primary flex items-center justify-center">
-              <span class="material-symbols-outlined text-3xl">hub</span>
-            </div>
-            <h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">OmniCore Exec</h2>
+      <header class="flex items-center justify-between border-b border-slate-200 dark:border-card-highlight px-6 lg:px-10 py-4 bg-white dark:bg-card-dark sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary text-3xl">local_cafe</span>
+          <div>
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-accent-neutral">AI Business OS</p>
+            <h1 class="text-lg font-extrabold text-slate-900 dark:text-white">HealthCoffee Platform</h1>
           </div>
-          <nav class="hidden lg:flex items-center gap-8">
-            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
-            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">AI Agents</a>
-            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Inventory</a>
-            <a class="text-slate-600 dark:text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
-          </nav>
         </div>
-        <div class="flex flex-1 justify-end gap-4 items-center">
-          <label class="hidden md:flex min-w-40 h-10 max-w-64 relative group">
-            <div class="flex w-full items-stretch rounded-lg h-full bg-slate-100 dark:bg-card-highlight group-focus-within:ring-2 ring-primary/50 transition-all">
-              <div class="text-slate-500 dark:text-accent-neutral flex items-center justify-center pl-3">
-                <span class="material-symbols-outlined text-[20px]">search</span>
-              </div>
-              <input class="w-full bg-transparent border-none text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-accent-neutral px-3 text-sm focus:ring-0 focus:outline-none" placeholder="Search insights..." />
-            </div>
-          </label>
-          <button class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-card-highlight text-slate-500 dark:text-accent-neutral transition-colors">
-            <span class="material-symbols-outlined">notifications</span>
-            <span class="absolute top-2 right-2 size-2 bg-accent-success rounded-full border-2 border-white dark:border-card-dark"></span>
-          </button>
-        </div>
+        <button class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold">Launch AI Copilot</button>
       </header>
 
-      <main class="flex-1 px-6 lg:px-20 py-8 w-full max-w-[1600px] mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-          <div>
-            <h1 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Executive Overview</h1>
-            <p class="text-slate-500 dark:text-accent-neutral text-base">Real-time strategic pulse of your supplement & functional nutrition business.</p>
-          </div>
-          <div class="flex gap-2">
-            <button class="flex items-center gap-2 px-4 py-2 bg-card-dark dark:bg-card-highlight text-slate-200 text-sm font-medium rounded-lg">Export Report</button>
-            <button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg shadow-lg shadow-primary/20">New Campaign</button>
-          </div>
-        </div>
+      <main class="flex-1 px-6 lg:px-10 py-8 max-w-[1500px] mx-auto w-full space-y-8">
+        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div class="xl:col-span-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight rounded-2xl p-6 shadow-sm">
+            <div class="flex justify-between items-center mb-6">
+              <div>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">AI Personal Health Coach Dashboard</h2>
+                <p class="text-sm text-slate-500 dark:text-accent-neutral">ข้อมูลรายวันเฉพาะบุคคล: พลังงาน น้ำหนัก และแผนดื่มกาแฟเพื่อสุขภาพ</p>
+              </div>
+              <span class="px-3 py-1 text-xs rounded-full bg-accent-success/15 text-accent-success font-semibold">Coach Online 24/7</span>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight shadow-sm">
-            <p class="text-sm text-slate-500 dark:text-accent-neutral mb-2">Total Revenue</p>
-            <p class="text-3xl font-bold text-slate-900 dark:text-white">$4.2M</p>
-          </div>
-          <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight shadow-sm">
-            <p class="text-sm text-slate-500 dark:text-accent-neutral mb-2">AI-driven ROI</p>
-            <p class="text-3xl font-bold text-slate-900 dark:text-white">320%</p>
-          </div>
-          <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight shadow-sm">
-            <p class="text-sm text-slate-500 dark:text-accent-neutral mb-2">CAC</p>
-            <p class="text-3xl font-bold text-slate-900 dark:text-white">$14.50</p>
-          </div>
-          <div class="p-6 rounded-xl bg-gradient-to-br from-card-dark to-card-highlight border border-slate-200 dark:border-card-highlight shadow-sm">
-            <p class="text-sm text-slate-300 mb-3">System Health</p>
-            <div class="space-y-2 text-xs">
-              <p class="text-slate-200">Marketing Agent <span class="text-accent-success float-right">98%</span></p>
-              <p class="text-slate-200">Sales Agent <span class="text-accent-success float-right">100%</span></p>
+            <div class="grid md:grid-cols-3 gap-4 mb-5">
+              <article class="rounded-xl p-5 bg-slate-50 dark:bg-card-highlight/70 border border-slate-200 dark:border-card-highlight">
+                <p class="text-xs text-slate-500 dark:text-accent-neutral mb-2">Daily Wellness Score</p>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">86<span class="text-lg">/100</span></p>
+                <p class="text-xs text-accent-success mt-2">+4 จากเมื่อวาน</p>
+              </article>
+              <article class="rounded-xl p-5 bg-slate-50 dark:bg-card-highlight/70 border border-slate-200 dark:border-card-highlight">
+                <p class="text-xs text-slate-500 dark:text-accent-neutral mb-2">Energy Trend</p>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">↑ 22%</p>
+                <p class="text-xs text-slate-500 dark:text-accent-neutral mt-2">ช่วง 14 วันที่ผ่านมา</p>
+              </article>
+              <article class="rounded-xl p-5 bg-slate-50 dark:bg-card-highlight/70 border border-slate-200 dark:border-card-highlight">
+                <p class="text-xs text-slate-500 dark:text-accent-neutral mb-2">Weight Progress</p>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">-2.8kg</p>
+                <p class="text-xs text-accent-success mt-2">เข้าใกล้เป้าหมาย 68%</p>
+              </article>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="rounded-xl p-4 bg-gradient-to-r from-primary/15 to-secondary/15 border border-primary/30">
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">Smart Coffee Schedule</h3>
+                <ul class="text-sm space-y-2 text-slate-700 dark:text-slate-200">
+                  <li>07:30 - Lean Burn Blend (ก่อนออกกำลัง)</li>
+                  <li>13:00 - Sugar Balance Roast (หลังอาหารกลางวัน)</li>
+                  <li>16:30 - Focus Clean Espresso (ลดอาการล้า)</li>
+                </ul>
+              </div>
+              <div class="rounded-xl p-4 bg-slate-50 dark:bg-card-highlight border border-slate-200 dark:border-card-highlight">
+                <h3 class="font-bold text-slate-900 dark:text-white mb-2">AI Coach Chat</h3>
+                <div class="space-y-2 text-sm">
+                  <p class="bg-white dark:bg-card-dark p-2 rounded-lg">โค้ชแนะนำเพิ่มน้ำวันละ 2.4 ลิตร เพื่อเสริมผลลัพธ์การเผาผลาญ</p>
+                  <p class="bg-primary/15 p-2 rounded-lg">รับทราบค่ะ ขอเมนูมื้อเย็นที่เหมาะกับกาแฟสูตรนี้</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <section class="lg:col-span-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight rounded-xl p-6 shadow-sm min-h-[340px]">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Revenue Growth vs AI Spend</h3>
-            <div class="h-64 rounded-lg bg-gradient-to-b from-slate-50 to-white dark:from-[#131b24] dark:to-card-dark flex items-end gap-3 p-4">
-              <div class="bg-primary/30 w-full h-[40%] rounded-t"></div>
-              <div class="bg-primary/40 w-full h-[55%] rounded-t"></div>
-              <div class="bg-primary/50 w-full h-[45%] rounded-t"></div>
-              <div class="bg-primary/60 w-full h-[70%] rounded-t"></div>
-              <div class="bg-primary/70 w-full h-[60%] rounded-t"></div>
-              <div class="bg-primary/90 w-full h-[85%] rounded-t"></div>
-            </div>
-          </section>
-
-          <aside class="bg-gradient-to-b from-card-highlight to-card-dark border border-slate-200 dark:border-card-highlight rounded-xl p-6 shadow-sm">
-            <h3 class="text-lg font-bold text-white mb-4">AI Strategic Insights</h3>
-            <div class="space-y-4 text-sm text-slate-200">
-              <div class="p-4 rounded-lg bg-white/5 border border-white/10">Demand for weight-management products up 15% in the North region.</div>
-              <div class="p-4 rounded-lg bg-white/5 border border-white/10">Predicted stock shortage for premium collagen blend in 3 days.</div>
-              <div class="p-4 rounded-lg bg-white/5 border border-white/10">Competitor discount campaign detected; retention remains strong at 92%.</div>
+          <aside class="bg-gradient-to-b from-card-highlight to-card-dark rounded-2xl p-6 border border-card-highlight text-white">
+            <h2 class="text-xl font-bold mb-4">Subscription Management</h2>
+            <div class="space-y-4 text-sm">
+              <div class="rounded-xl border border-white/15 bg-white/5 p-4">
+                <p class="text-slate-300 text-xs mb-1">Current Plan</p>
+                <p class="font-semibold">Pro Wellness Box - Monthly</p>
+                <p class="text-accent-success text-xs mt-1">ต่ออายุอัตโนมัติ 12 พ.ค.</p>
+              </div>
+              <div class="rounded-xl border border-white/15 bg-white/5 p-4">
+                <p class="font-semibold mb-2">Box Customizer</p>
+                <p class="text-slate-200 text-xs">AI แนะนำสัดส่วน: Fat Burn 40% | Focus 35% | Protein 25%</p>
+              </div>
+              <div class="rounded-xl border border-white/15 bg-white/5 p-4">
+                <p class="font-semibold mb-2">Delivery Calendar</p>
+                <p class="text-slate-200 text-xs">ครั้งถัดไป: 18 เม.ย. • สามารถเลื่อน/ข้ามได้ 1 คลิก</p>
+              </div>
+              <button class="w-full py-2 rounded-lg bg-primary font-semibold">Customize Subscription</button>
             </div>
           </aside>
-        </div>
+        </section>
+
+        <section class="bg-white dark:bg-card-dark border border-slate-200 dark:border-card-highlight rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <div>
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white">AI Chatbot Training & Sentiment Analysis</h2>
+              <p class="text-sm text-slate-500 dark:text-accent-neutral">ศูนย์ควบคุมคุณภาพบทสนทนา AI พร้อม Human-in-the-loop</p>
+            </div>
+            <div class="flex gap-2 text-xs">
+              <span class="px-3 py-1 rounded-full bg-accent-success/15 text-accent-success">Positive 72%</span>
+              <span class="px-3 py-1 rounded-full bg-accent-warning/15 text-accent-warning">Neutral 20%</span>
+              <span class="px-3 py-1 rounded-full bg-accent-danger/15 text-accent-danger">Negative 8%</span>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-slate-200 dark:border-card-highlight p-4 bg-slate-50 dark:bg-card-highlight/60">
+              <h3 class="font-bold mb-3">Live Sentiment Pulse</h3>
+              <div class="h-28 rounded-lg bg-gradient-to-r from-accent-danger/20 via-accent-warning/20 to-accent-success/20 flex items-end gap-2 p-2">
+                <div class="w-full h-[30%] bg-accent-danger/50 rounded"></div>
+                <div class="w-full h-[45%] bg-accent-warning/50 rounded"></div>
+                <div class="w-full h-[55%] bg-accent-warning/60 rounded"></div>
+                <div class="w-full h-[70%] bg-accent-success/60 rounded"></div>
+                <div class="w-full h-[80%] bg-accent-success rounded"></div>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 dark:border-card-highlight p-4 bg-slate-50 dark:bg-card-highlight/60">
+              <h3 class="font-bold mb-3">Training Queue</h3>
+              <ul class="text-sm space-y-2">
+                <li class="p-2 rounded bg-white dark:bg-card-dark">ลูกค้ากังวลเรื่องคาเฟอีนกับความดัน (Pending review)</li>
+                <li class="p-2 rounded bg-white dark:bg-card-dark">ขอแผนใช้สินค้า 90 วันสำหรับเบาหวาน (Needs expert)</li>
+                <li class="p-2 rounded bg-white dark:bg-card-dark">ร้องเรียนรสชาติ + ต้องการยกเลิก (Retention flow)</li>
+              </ul>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 dark:border-card-highlight p-4 bg-slate-50 dark:bg-card-highlight/60">
+              <h3 class="font-bold mb-3">Agent KPI</h3>
+              <div class="space-y-2 text-sm">
+                <p>Conversion Rate <span class="float-right text-accent-success">31.4%</span></p>
+                <p>Avg Resolution Time <span class="float-right">1m 42s</span></p>
+                <p>Escalation Rate <span class="float-right text-accent-warning">6.1%</span></p>
+                <p>Compliance Accuracy <span class="float-right text-accent-success">99.2%</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   </body>
