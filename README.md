@@ -1,12 +1,13 @@
 # Amparlai-AI
 
-AI-first UI mockup for a health coffee business operations platform.
+เว็บต้นแบบ (single-page) สำหรับแพลตฟอร์มบริหารการขายผลิตภัณฑ์อาหารเสริมด้วยสถาปัตยกรรม **Multi-Agent AI** ในบริบทธุรกิจปี 2026
 
-## Included screens
+## สิ่งที่แสดงในหน้าเว็บ
 
-- AI Personal Health Coach customer dashboard
-- Subscription management and customization panel
-- AI Chatbot training and sentiment analysis interface
+- แนวคิด Enterprise Multi-Agent Orchestration (CrewAI + LangGraph)
+- โครงสร้าง AI C-Suite และบทบาทหลัก
+- Workflow สำคัญของ R&D, Agentic Commerce และ Compliance
+- KPI snapshot สำหรับผู้บริหาร
 
 ## Run locally
 
@@ -14,4 +15,4 @@ AI-first UI mockup for a health coffee business operations platform.
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000`.
+จากนั้นเปิด `http://localhost:8000`
