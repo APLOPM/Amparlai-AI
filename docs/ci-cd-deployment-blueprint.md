@@ -255,3 +255,22 @@ Developer pushes feature branch
 - Sub-second scaling สำหรับ campaign spikes
 - Zero manual production patching
 - Full traceability + instant rollback
+
+
+## 15) Production-Ready GitHub Actions Workflow (Implemented)
+
+ไฟล์ workflow ที่เพิ่มให้ใช้งานจริง:
+- `.github/workflows/ci-cd.yml`
+
+Assumptions:
+- โครงสร้าง repo มี `/frontend` และ `/backend`
+- Kubernetes cluster พร้อม `kubectl` access
+- ตั้งค่า GitHub Secrets แล้ว: `GHCR_TOKEN`, `KUBE_CONFIG`, `SNYK_TOKEN`
+
+Pipeline jobs:
+- `test`: lint/type-check/test (Frontend + Backend)
+- `security`: Snyk + npm audit + pip-audit
+- `build`: build & push images ไป GHCR (staging/main)
+- `deploy`: deploy main branch ไป Kubernetes
+- `smoke-test`: ตรวจ health endpoint หลัง deploy
+- `deploy-canary`: optional canary deployment บน staging

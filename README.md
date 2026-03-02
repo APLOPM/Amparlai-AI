@@ -50,8 +50,7 @@ Open: <http://localhost:8000>
 เพิ่มเอกสารและไฟล์ template สำหรับ CI/CD + Kubernetes deployment แล้วที่:
 
 - `docs/ci-cd-deployment-blueprint.md`
-- `.github/workflows/ci.yml`
-- `.github/workflows/cd.yml`
-- `k8s/*.yaml`
+- `.github/workflows/ci-cd.yml`
+- `k8s/*.yaml` (รวม `canary-deployment.yaml`)
 
 เอกสารนี้ครอบคลุม Git strategy, security scanning, zero-downtime rollout, auto-scaling, rollback, secrets management และ observability สำหรับระบบ AI multi-agent ระดับ enterprise.
