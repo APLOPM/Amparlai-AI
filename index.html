@@ -149,6 +149,72 @@
         </div>
       </section>
 
+      <section class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
+        <h2 class="font-heading text-2xl font-semibold">Full System Architecture Diagram (Layered Technical Map)</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          แผนภาพเชิงเทคนิคแบบ Layered แสดงเส้นทางข้อมูลจากช่องทางรับข้อมูลลูกค้า → การตัดสินใจของ Multi-Agent → การปฏิบัติการธุรกิจ → Governance และความปลอดภัย.
+        </p>
+
+        <div class="mt-5 grid gap-3 text-sm">
+          <div class="rounded-xl border-2 border-electric/40 bg-electric/5 p-4">
+            <p class="text-xs uppercase tracking-wider text-electric font-semibold">Layer 7 · Experience &amp; Delivery</p>
+            <p class="mt-1 text-slate-700">Executive Dashboard, C-Suite Copilot, Sales Cockpit, Customer Journey UI (Web + LINE OA + Mobile)</p>
+          </div>
+
+          <div class="flex justify-center text-slate-400 font-code">↓</div>
+
+          <div class="rounded-xl border-2 border-indigo-300 bg-indigo-50 p-4">
+            <p class="text-xs uppercase tracking-wider text-indigo-700 font-semibold">Layer 6 · Decision Intelligence</p>
+            <p class="mt-1 text-slate-700">KPI Scoring, Revenue Optimization, Forecasting, Recommendation Engine, Dynamic Pricing &amp; Offer Strategy</p>
+          </div>
+
+          <div class="flex justify-center text-slate-400 font-code">↓</div>
+
+          <div class="rounded-xl border-2 border-violet-300 bg-violet-50 p-4">
+            <p class="text-xs uppercase tracking-wider text-violet-700 font-semibold">Layer 5 · Multi-Agent Orchestration Core</p>
+            <p class="mt-1 text-slate-700">LangGraph Workflow Engine + CrewAI Collaboration + Role Agents (CEO, COO, CFO, CMO, Sales, R&amp;D, Compliance)</p>
+          </div>
+
+          <div class="flex justify-center text-slate-400 font-code">↓</div>
+
+          <div class="rounded-xl border-2 border-emerald/50 bg-emerald/10 p-4">
+            <p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold">Layer 4 · AI/ML Runtime</p>
+            <p class="mt-1 text-slate-700">Gemini Models, Genkit Pipelines, RAG Services, Vector Retrieval (Milvus/Pinecone), Model Monitoring</p>
+          </div>
+
+          <div class="flex justify-center text-slate-400 font-code">↓</div>
+
+          <div class="rounded-xl border-2 border-amber/50 bg-amber/10 p-4">
+            <p class="text-xs uppercase tracking-wider text-amber-700 font-semibold">Layer 3 · Domain Services &amp; Integrations</p>
+            <p class="mt-1 text-slate-700">ERP/OMS, Warehouse &amp; Logistics APIs, Payment Gateway, CRM, TikTok Shop, Terra, LINE Messaging, Partner APIs</p>
+          </div>
+
+          <div class="flex justify-center text-slate-400 font-code">↓</div>
+
+          <div class="rounded-xl border-2 border-slate-300 bg-slate-50 p-4">
+            <p class="text-xs uppercase tracking-wider text-slate-700 font-semibold">Layer 2 · Data Platform</p>
+            <p class="mt-1 text-slate-700">Event Streaming, ETL/ELT, PostgreSQL, Feature Store, Analytics Warehouse, Consent &amp; Audit Logs</p>
+          </div>
+
+          <div class="flex justify-center text-slate-400 font-code">↓</div>
+
+          <div class="rounded-xl border-2 border-softred/40 bg-red-50 p-4">
+            <p class="text-xs uppercase tracking-wider text-red-700 font-semibold">Layer 1 · Governance, Security &amp; Infra Foundation</p>
+            <p class="mt-1 text-slate-700">PDPA/อย. Compliance Rules, Policy Engine, IAM, Secret Management, Observability, Docker/Kubernetes, CI/CD</p>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-lg bg-slate-900 text-slate-100 p-4 font-code text-xs overflow-x-auto">
+          <pre>
+Users/Channels → Experience UI → Decision Intelligence → Agent Orchestration
+                    ↓                    ↓                      ↓
+              Domain Integrations ← AI Runtime &amp; RAG ← Data Platform
+                                  ↓
+                     Governance · Security · Compliance · Infra
+          </pre>
+        </div>
+      </section>
+
       <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
         <article class="bg-white rounded-2xl border border-slate-200 shadow-card p-6">
           <h3 class="font-heading text-lg">3.1 AI-Driven R&amp;D</h3>
