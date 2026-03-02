@@ -1,13 +1,17 @@
 # Amparlai-AI
 
-เว็บต้นแบบ (single-page) สำหรับแพลตฟอร์มบริหารการขายผลิตภัณฑ์อาหารเสริมด้วยสถาปัตยกรรม **Multi-Agent AI** ในบริบทธุรกิจปี 2026
+เว็บต้นแบบ (single-page) สำหรับแสดง **Technical & UX Consolidated Blueprint** ของระบบ
+**Multi-Agent Orchestration Core** สำหรับธุรกิจ Personalized Nutrition
 
 ## สิ่งที่แสดงในหน้าเว็บ
 
-- แนวคิด Enterprise Multi-Agent Orchestration (CrewAI + LangGraph)
-- โครงสร้าง AI C-Suite และบทบาทหลัก
-- Workflow สำคัญของ R&D, Agentic Commerce และ Compliance
-- KPI snapshot สำหรับผู้บริหาร
+- Core AI Orchestration Layer (LangGraph + CrewAI + Gemini + Genkit)
+- AI C-Suite Functional Architecture (CEO, COO, CFO, CMO, Sales, R&D, Compliance)
+- Hyper-Personalized Health Integration (Terra API + Consent-first flow)
+- Autonomous Logistics & Delivery event chain
+- Calm Technology interface principles และสถานะไฟเตือนระบบ
+- UI spec: 12-column layout, color tokens, typography hierarchy, animation guidance
+- Tech stack + observability + deployment positioning
 
 ## Run locally
 
