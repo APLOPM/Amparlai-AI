@@ -1,24 +1,41 @@
 # Amparlai-AI
 
-หน้าเว็บนี้เป็น **UX Wireframe Structure (Screen-by-Screen Blueprint)** สำหรับแพลตฟอร์ม **Multi-Agent Orchestration Core**
-โดยยึดแนวคิด **Calm Technology + Executive Peripheral Awareness**
+โครงสร้างนี้เป็น **Frontend Project Blueprint** สำหรับ Next.js App Router ที่ออกแบบสำหรับ
+**Enterprise-Grade Multi-Agent Platform** โดยยึดหลัก
+**Agent Isolation, Scalability, RBAC, และ Calm Technology UI**
 
-## สิ่งที่ครอบคลุม
+## Technology Stack
 
-- Global structure ที่ใช้ร่วมกันทุกหน้าจอ
-  - Top navigation bar
-  - Left sidebar (collapsible)
-  - 12-column responsive grid + card modules + whitespace 24–32px
-- Wireframe รายหน้าครบทั้ง 12 screens
-  - Executive Overview
-  - AI CEO / COO / CFO / CMO / Sales Director / R&D / Compliance
-  - Health Integration / Logistics Control / Audit & Logs / System Settings
-- UX core principles
-  - Peripheral awareness first
-  - Exceptions only surface centrally
-  - No real-time noise
-  - Decision confidence always visible
-  - Every AI action traceable
+- Next.js (App Router)
+- TypeScript
+- TailwindCSS
+- Zustand / Redux Toolkit
+- TanStack Query
+- Genkit Client SDK
+
+## Project Structure
+
+```text
+/app
+/components
+/features
+/lib
+/hooks
+/store
+/styles
+/types
+/utils
+/config
+/public
+```
+
+## แนวคิดสถาปัตยกรรม
+
+- **1 Agent = 1 Route boundary** (`/app/<agent>/page.tsx`)
+- **Domain isolation** แยกตามโฟลเดอร์ใน `/features`
+- **Reusable UI system** อยู่ใน `/components`
+- แยก **API / Business logic / State / UI** ชัดเจน
+- รองรับการเพิ่ม `middleware.ts` สำหรับ RBAC และ session validation
 
 ## Run locally
 
