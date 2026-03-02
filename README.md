@@ -1,20 +1,24 @@
 # Amparlai-AI
 
-UX Wireframe Blueprint สำหรับแพลตฟอร์ม **Multi-Agent Orchestration Core**
-โดยออกแบบตามหลัก **Calm Technology + Executive Peripheral Awareness**
+หน้าเว็บนี้เป็น **UX Wireframe Structure (Screen-by-Screen Blueprint)** สำหรับแพลตฟอร์ม **Multi-Agent Orchestration Core**
+โดยยึดแนวคิด **Calm Technology + Executive Peripheral Awareness**
 
-## เนื้อหาในหน้าเว็บ
+## สิ่งที่ครอบคลุม
 
-- Global structure ที่ใช้ร่วมกันทุกหน้าจอ (Top Nav + Sidebar + 12-column responsive layout)
-- Screen-by-screen wireframe ครบ 12 หน้าจอ
+- Global structure ที่ใช้ร่วมกันทุกหน้าจอ
+  - Top navigation bar
+  - Left sidebar (collapsible)
+  - 12-column responsive grid + card modules + whitespace 24–32px
+- Wireframe รายหน้าครบทั้ง 12 screens
   - Executive Overview
   - AI CEO / COO / CFO / CMO / Sales Director / R&D / Compliance
   - Health Integration / Logistics Control / Audit & Logs / System Settings
-- UX principles ที่ฝังในระบบ
+- UX core principles
   - Peripheral awareness first
-  - Exceptions-only surfacing
-  - Decision confidence visibility
-  - Full traceability
+  - Exceptions only surface centrally
+  - No real-time noise
+  - Decision confidence always visible
+  - Every AI action traceable
 
 ## Run locally
 
@@ -22,4 +26,4 @@ UX Wireframe Blueprint สำหรับแพลตฟอร์ม **Multi-Age
 python3 -m http.server 8000
 ```
 
-เปิดที่ `http://localhost:8000`
+Open: <http://localhost:8000>
