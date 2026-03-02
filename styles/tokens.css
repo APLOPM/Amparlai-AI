@@ -1,0 +1,8 @@
+:root {
+  --color-status-ok: #16a34a;
+  --color-status-warn: #f59e0b;
+  --color-status-critical: #dc2626;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --duration-calm: 200ms;
+}
