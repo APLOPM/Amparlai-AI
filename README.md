@@ -44,3 +44,13 @@ python3 -m http.server 8000
 ```
 
 Open: <http://localhost:8000>
+
+## CI/CD + Deployment Blueprint
+
+เพิ่มเอกสารและไฟล์ template สำหรับ CI/CD + Kubernetes deployment แล้วที่:
+
+- `docs/ci-cd-deployment-blueprint.md`
+- `.github/workflows/ci-cd.yml`
+- `k8s/*.yaml` (รวม `canary-deployment.yaml`)
+
+เอกสารนี้ครอบคลุม Git strategy, security scanning, zero-downtime rollout, auto-scaling, rollback, secrets management และ observability สำหรับระบบ AI multi-agent ระดับ enterprise.

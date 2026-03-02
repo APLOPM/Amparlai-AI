@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-canary
+  labels:
+    app: backend
+    track: canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: backend
+        track: canary
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/example/amparlai-ai/backend:staging
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-canary-service
+spec:
+  selector:
+    app: backend
+    track: canary
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000

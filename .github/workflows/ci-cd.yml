@@ -1,0 +1,193 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+      - staging
+      - main
+  pull_request:
+    branches:
+      - staging
+      - main
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME_FRONTEND: ${{ github.repository }}/frontend
+  IMAGE_NAME_BACKEND: ${{ github.repository }}/backend
+
+jobs:
+  test:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Lint Frontend
+        run: |
+          cd frontend
+          npm run lint
+
+      - name: Type Check
+        run: |
+          cd frontend
+          npm run type-check
+
+      - name: Run Frontend Tests
+        run: |
+          cd frontend
+          npm run test -- --coverage
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run Backend Tests
+        run: |
+          cd backend
+          pytest
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Snyk Scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: npm audit
+        run: |
+          cd frontend
+          npm audit --audit-level=high
+
+      - name: pip audit
+        run: |
+          cd backend
+          pip install pip-audit
+          pip-audit -r requirements.txt
+
+  build:
+    name: Build & Push
+    runs-on: ubuntu-latest
+    needs: security
+    if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build Frontend Image
+        run: |
+          docker build -t $REGISTRY/$IMAGE_NAME_FRONTEND:${{ github.sha }} ./frontend
+          docker tag $REGISTRY/$IMAGE_NAME_FRONTEND:${{ github.sha }} $REGISTRY/$IMAGE_NAME_FRONTEND:staging
+          docker push $REGISTRY/$IMAGE_NAME_FRONTEND:${{ github.sha }}
+          docker push $REGISTRY/$IMAGE_NAME_FRONTEND:staging
+
+      - name: Build Backend Image
+        run: |
+          docker build -t $REGISTRY/$IMAGE_NAME_BACKEND:${{ github.sha }} ./backend
+          docker tag $REGISTRY/$IMAGE_NAME_BACKEND:${{ github.sha }} $REGISTRY/$IMAGE_NAME_BACKEND:staging
+          docker push $REGISTRY/$IMAGE_NAME_BACKEND:${{ github.sha }}
+          docker push $REGISTRY/$IMAGE_NAME_BACKEND:staging
+
+  deploy:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
+          echo "KUBECONFIG=$PWD/kubeconfig" >> $GITHUB_ENV
+
+      - name: Update Frontend Image
+        run: |
+          kubectl set image deployment/frontend frontend=$REGISTRY/$IMAGE_NAME_FRONTEND:${{ github.sha }}
+
+      - name: Update Backend Image
+        run: |
+          kubectl set image deployment/backend backend=$REGISTRY/$IMAGE_NAME_BACKEND:${{ github.sha }}
+
+      - name: Rollout Status
+        run: |
+          kubectl rollout status deployment/frontend
+          kubectl rollout status deployment/backend
+
+  smoke-test:
+    name: Post-Deploy Smoke Test
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Health Check
+        run: |
+          curl -f https://yourdomain.com/api/health || exit 1
+
+  deploy-canary:
+    name: Optional Canary Deployment
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/staging'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
+          echo "KUBECONFIG=$PWD/kubeconfig" >> $GITHUB_ENV
+
+      - name: Deploy Canary
+        run: |
+          kubectl apply -f k8s/canary-deployment.yaml
